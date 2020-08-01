@@ -76,11 +76,13 @@ msgctxt "#32023"
 msgid "Linux: Upgrade complete system"
 msgstr ""
 
-msgctxt "#32024"
-msgid "Linux: Upgrade using apt"
+# empty strings with id 32024
+
+msgctxt "#32025"
+msgid "Linux: Upgrade using package manager"
 msgstr ""
 
-# empty strings from id 32025 to 32029
+# empty strings from id 32026 to 32029
 
 #. Used in OK dialog
 msgctxt "#32030"

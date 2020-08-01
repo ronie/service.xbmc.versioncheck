@@ -34,15 +34,6 @@ from .json_interface import get_installed_version
 from .versions import compare_version
 
 
-if sys.version_info[0] == 3 and sys.version_info[1] >= 8:
-    from .distro import distro
-    DISTRIBUTION = distro.linux_distribution(full_distribution_name=False)[0].lower()
-else:
-    import platform
-    # pylint: disable=deprecated-method
-    DISTRIBUTION = platform.linux_distribution(full_distribution_name=0)[0].lower()
-
-
 def _version_check():
     """ Check versions (non-linux)
 
@@ -65,7 +56,8 @@ def _version_check_linux(packages):
     :param packages: list of packages to check
     :type packages: list of str
     """
-    if DISTRIBUTION in ['ubuntu', 'debian', 'linuxmint']:
+    import shutil
+    if shutil.which('apt'):
         try:
             # try aptdaemon first
             # pylint: disable=import-outside-toplevel
@@ -144,7 +136,7 @@ def run():
             sys.exit(0)
 
         if (xbmc.getCondVisibility('System.Platform.Linux') and
-                ADDON.getSetting('upgrade_apt') == 'true'):
+                ADDON.getSetting('use_packagemanager') == 'true'):
             _version_check_linux(['kodi'])
         else:
             old_version, version_installed, version_available, version_stable = _version_check()

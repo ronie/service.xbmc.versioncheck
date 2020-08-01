@@ -13,9 +13,9 @@
                     <default>false</default>
                     <control type="toggle"/>
                 </setting>
-                <setting help="" id="upgrade_apt" label="32024" type="boolean">
+                <setting help="" id="use_packagemanager" label="32025" type="boolean">
                     <level>0</level>
-                    <default>false</default>
+                    <default>true</default>
                     <control type="toggle"/>
                 </setting>
             </group>
